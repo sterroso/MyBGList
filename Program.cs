@@ -23,6 +23,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.MapGet("/error", () => Results.Problem());
+
 app.MapControllers();
 
 app.Run();
