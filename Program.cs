@@ -10,17 +10,17 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Configuration.GetValue<bool>("UseSwagger"))
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 if (app.Configuration.GetValue<bool>("UseDeveloperExceptionPage"))
 {
-    app.UseDeveloperExceptionPage();
+  app.UseDeveloperExceptionPage();
 } else {
-    app.UseExceptionHandler("/error");
+  app.UseExceptionHandler("/error");
 }
 
 app.UseHttpsRedirection();
